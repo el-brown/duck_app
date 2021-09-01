@@ -7,7 +7,7 @@ class DucksController < ApplicationController
   #Just returning this data as json
   def index
     ducks = Duck.all
-    render json: @ducks
+    render json: ducks
   end
 
 

@@ -1,17 +1,16 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import Ducks from './Ducks';
+import axios from 'axios';
 
 const App = () => {
   const [ducks, setDucks] = useState([]);
 
   const getDucks = async () => {
     try {
-      let res = await axios.get("./ducks"); 
-      console.log(res);
+      let res = await axios.get("/ducks"); 
       setDucks(res.data);
-    } catch (error) {
-      console.log("error")
+
+    } catch (err) {
       alert("Error!")
     }
   }
