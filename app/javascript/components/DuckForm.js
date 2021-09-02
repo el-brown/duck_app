@@ -5,6 +5,7 @@ const DuckForm = (props) => {
   const { addDuck } = props
   const [name, setName] = useState(props.name ? props.name : '')
   const [phrase, setPhrase] = useState(props.phrase ? props.phrase : '')
+  const [form, setForm] = useState()
 
   // e stands for event. The event of the submit. preventDefault keeps the page from
   //refreshing. The axios call sends the info to the back end. addDuck(res.data)
@@ -20,8 +21,8 @@ const DuckForm = (props) => {
   };
 
   return (
-    <div style={{ margin: "10px", border: "1px solid", padding: "20px" }}>
-      <h1>{props.id ? "Fix this" : "Gimme a"} Duck!</h1>
+    <div className="form">
+      <h2>{props.id ? "Fix this" : "Gimme a"} Duck!</h2>
     <form className="duck-form" onSubmit={handleSubmit}>
       <p>Duck's Name</p>
       <input 

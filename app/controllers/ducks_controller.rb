@@ -4,7 +4,7 @@ class DucksController < ApplicationController
     render component: 'App'
   end
 
-  #Just returning this data as json
+  #Storing all Duck data from the database in an instance variable - ducks
   def index
     ducks = Duck.all
     render json: ducks

@@ -5,7 +5,7 @@ const Ducks = ({ducks, deleteDuck}) => {
   
   const renderDucks = () => {
     if (ducks.length == 0) {
-      return <h1>No ducks.</h1>
+      return <h3>No ducks.</h3>
     } 
       return ducks.map((duck) => {
       return <Duck key={duck.id} deleteDuck={deleteDuck} {...duck}/>;
@@ -13,8 +13,8 @@ const Ducks = ({ducks, deleteDuck}) => {
   };
   
   return (
-    <div>
-      <h1>Here are my Dukths!</h1>
+    <div className="myDucks">
+      <h2>Here are my Dukths!</h2>
       {renderDucks()}
     </div>
   );

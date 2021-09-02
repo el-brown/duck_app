@@ -3,6 +3,8 @@ import Ducks from './Ducks';
 import axios from 'axios';
 import DuckForm from './DuckForm';
 
+
+
 const App = () => {
   const [ducks, setDucks] = useState([]);
 
@@ -31,7 +33,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Thith ith my app!</h1>
+      <h1 className="App-header">Thith ith my app!</h1>
       <button onClick={getDucks}>Get Ducks</button>
       <DuckForm addDuck={addDuck} />
       <Ducks ducks={ducks} deleteDuck={deleteDuck} />

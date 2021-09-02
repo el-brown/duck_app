@@ -12,7 +12,8 @@ const Duck = (props) => {
   return (
     <div className="duck-container">
       <h1>{name}</h1>
-      <p>{phrase}</p>
+      <p>{`"${phrase}"`}</p>
+      <button onClick={() => editDuck(id)}>Edit</button>
       <button onClick={() => deleteHandler(id)}>Delete</button>
     </div>
   );
