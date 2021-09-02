@@ -3,8 +3,6 @@ import Ducks from './Ducks';
 import axios from 'axios';
 import DuckForm from './DuckForm';
 
-
-
 const App = () => {
   const [ducks, setDucks] = useState([]);
 
@@ -16,6 +14,16 @@ const App = () => {
       alert("Error!")
     };
   };
+
+  const updateDuck = async (duck) => {
+    try {
+      let res = await axios.put(`/ducks/${duck.id}`, duck);
+      let newDucks = ducks.map((d) => (d.id === duck.id ? res.data : d));
+      setDucks(newDucks);
+    } catch (err) {
+      
+    }
+  }
 
 
   const addDuck = (duck) => {
@@ -34,9 +42,9 @@ const App = () => {
   return (
     <div>
       <h1 className="App-header">Thith ith my app!</h1>
-      <button onClick={getDucks}>Get Ducks</button>
       <DuckForm addDuck={addDuck} />
-      <Ducks ducks={ducks} deleteDuck={deleteDuck} />
+      <button onClick={getDucks}>Get Ducks</button>     
+      <Ducks ducks={ducks} deleteDuck={deleteDuck} updateDuck={updateDuck} />
     </div>
   );
 };

@@ -44,3 +44,9 @@ a {
 .myDucks {
   margin: 80px 30px;
 }
+
+button {
+  color: rgb(172, 206, 172);
+  background-color: #424752;
+  border-radius: 11%;
+}

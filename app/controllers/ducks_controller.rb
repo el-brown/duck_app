@@ -19,6 +19,16 @@ class DucksController < ApplicationController
     end
   end
 
+  def update
+    @duck = Duck.find(params[:id])
+    if(@duck.update(duck_params))
+      render json: @duck
+    else
+      render json: {errors: duck.errors }, status: :unprocessable_entity
+    end
+  end
+
+
   def destroy
     @duck = Duck.find(params[:id])
     render json: @duck.destroy
