@@ -21,15 +21,19 @@ const App = () => {
       let newDucks = ducks.map((d) => (d.id === duck.id ? res.data : d));
       setDucks(newDucks);
     } catch (err) {
-      
     }
   }
 
 
-  const addDuck = (duck) => {
-    setDucks([duck, ...ducks]);
+  const addDuck = async (duck) => {
+    try {
+      let res = await axios.post(`/ducks`, duck);
+      setDucks([res.data, ...ducks]);
+    } catch (error) {
+    }
   };
 
+  
   //returning everything in a new array where id doesn't match this one. setDucks to that new array
   const deleteDuck = (id) => {
     const filteredDucks = ducks.filter((duck) => {
