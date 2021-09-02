@@ -12,7 +12,7 @@ const Duck = (props) => {
   }
 
   return (
-    <div className="duck-container">
+    <div className="cards">
       <h1>{name}</h1>
       <p>{`"${phrase}"`}</p>
       <button onClick={() => setShowForm(!showForm)}>
