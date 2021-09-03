@@ -12,9 +12,9 @@ const DuckForm = (props) => {
           updateDuck({ id:id, name:duckName, phrase:duckPhrase});
         } else {
           addDuck({ id:Math.random(), name:duckName, phrase:duckPhrase});
+          setDuckName("")
+          setDuckPhrase("");
         }
-        setDuckName("")
-        setDuckPhrase("");
     };
 
   return (

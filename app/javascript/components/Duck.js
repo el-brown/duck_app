@@ -16,7 +16,7 @@ const Duck = (props) => {
       <h1>{name}</h1>
       <p>{`"${phrase}"`}</p>
       <button onClick={() => setShowForm(!showForm)}>
-        {showForm ? "Cancel Edit" : "Edit"}
+        {showForm ? "Done" : "Edit"}
       </button>
       {showForm && (
       <DuckForm
