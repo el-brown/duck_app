@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Ducks from './Ducks';
 import axios from 'axios';
 import DuckForm from './DuckForm';
 
 const App = () => {
   const [ducks, setDucks] = useState([]);
+  const [showDucks, setShowDucks] = useState(true)
+
+  useEffect(() => {
+    getDucks();
+    console.log(showDucks)
+  }, []);
 
   const getDucks = async () => {
     try {
@@ -21,6 +27,7 @@ const App = () => {
       let newDucks = ducks.map((d) => (d.id === duck.id ? res.data : d));
       setDucks(newDucks);
     } catch (err) {
+      alert("You must use a name and catchphrase")
     }
   }
 
@@ -29,11 +36,12 @@ const App = () => {
     try {
       let res = await axios.post(`/ducks`, duck);
       setDucks([res.data, ...ducks]);
-    } catch (error) {
+    } catch (err) {
+      alert("You must use a name and catchphrase")
     }
   };
 
-  
+
   //returning everything in a new array where id doesn't match this one. setDucks to that new array
   const deleteDuck = (id) => {
     const filteredDucks = ducks.filter((duck) => {
@@ -42,12 +50,17 @@ const App = () => {
     setDucks(filteredDucks)
 };
 
+  const toggleShowDucks = () => {
+    setShowDucks(!showDucks);
+    console.log(showDucks)
+  }
 
   return (
     <div>
       <h1 className="App-header">Thith ith my app!</h1>
       <DuckForm addDuck={addDuck} />
-      <button onClick={getDucks}>Get Ducks</button>     
+      <button onClick={toggleShowDucks}>
+        {showDucks ? "Hide Ducks" : "Get Ducks"}</button>     
       <Ducks ducks={ducks} deleteDuck={deleteDuck} updateDuck={updateDuck} />
     </div>
   );
